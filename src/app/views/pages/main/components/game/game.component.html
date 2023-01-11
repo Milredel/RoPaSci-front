@@ -3,6 +3,29 @@
         <div class="card-body">
             <h5 class="card-title text-center">{{ username }} VS {{ game.opponent }}</h5>
             <h5 class="card-title text-center">{{ currentRound }} / {{ game.roundNumber }}</h5>
+
+            <div class="row">
+                <div class="row mx-auto text-center">
+                    <div>
+                        <img src="assets/images/game/rock.png" class="mw-200p cursor-pointer pr-10" alt="rock" />
+                    </div>
+                    <div>
+                        <img src="assets/images/game/paper.png" class="mw-200p cursor-pointer pr-10" alt="paper" />
+                    </div>
+                    <div>
+                        <img src="assets/images/game/scissors.png" class="mw-200p cursor-pointer pr-10" alt="scissors" />
+                    </div>
+                    <div *ngIf="game.mode === MODES.FRENCH" >
+                        <img src="assets/images/game/well.png" class="mw-200p cursor-pointer" alt="well" />
+                    </div>
+                    <div *ngIf="game.mode === MODES.STAR_TREK" >
+                        <img src="assets/images/game/lizard.png" class="mw-200p cursor-pointer pr-10" alt="lizard" />
+                    </div>
+                    <div *ngIf="game.mode === MODES.STAR_TREK" >
+                        <img src="assets/images/game/spock.png" class="mw-200p cursor-pointer" alt="Spock" />
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

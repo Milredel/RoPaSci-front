@@ -1,7 +1,8 @@
 export const GAME = {
     MODE: {
         CLASSIC: 'classic',
-        EXTENDED: 'extended'
+        FRENCH: 'french',
+        STAR_TREK: 'star_trek'
     },
     OPPONENT: {
         COMPUTER: 'computer',

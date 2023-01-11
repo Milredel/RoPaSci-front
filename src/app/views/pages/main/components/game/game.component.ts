@@ -16,6 +16,7 @@ export class GameComponent implements OnInit {
     username: string;
     game: GameModel;
     currentRound = 1;
+    MODES = GAME.MODE;
 
     constructor(public apiAuthSrv: ApiAuthService,
                 private router: Router,
