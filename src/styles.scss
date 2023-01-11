@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Exo', sans-serif;
+  background: #D3CCE3;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #E9E4F0, #D3CCE3);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #E9E4F0, #D3CCE3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.invalid-feedback {
+  display: block;
+  color: #ff3547 !important;
+  margin-left: 1.5rem;
+}
+
+.control-error {
+  border-color: #ff3547 !important;
+}
+
+.no-margin-bottom {
+  margin-bottom: 0 !important;
+}

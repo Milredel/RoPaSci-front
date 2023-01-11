@@ -1,0 +1,47 @@
+<div class="context">
+  <div class="container w-50 bg-white">
+    <form [formGroup]="form" class="border border-light p-5">
+      <p class="h4 mb-4">Login :</p>
+
+      <div class="md-form">
+        <mdb-icon fas icon="user" class="prefix grey-text"></mdb-icon>
+        <input type="text" id="username" formControlName="username" class="form-control" mdbInput>
+        <label for="username" class="font-weight-light">Username</label>
+      </div>
+      <val-errors controlName="username">
+        <ng-template valError="required">
+          This field is required.
+        </ng-template>
+      </val-errors>
+      <br>
+      <div class="md-form">
+        <mdb-icon fas icon="lock" class="prefix grey-text"></mdb-icon>
+        <input type="password" id="password" formControlName="password" class="form-control" mdbInput>
+        <label for="password" class="font-weight-light">Password</label>
+      </div>
+      <val-errors controlName="password">
+        <ng-template valError="required">
+          This field is required.
+        </ng-template>
+      </val-errors>
+      <div class="row m-t-30">
+        <div class="col-md-12">
+
+          <button (click)="auth()" [disabled]="apiAuthSrv.requesting" type="submit"
+                  class="btn btn-primary btn-block waves-effect text-center m-b-20">
+            Login
+          </button>
+        </div>
+      </div>
+
+      <div class="text-center">
+        Services status: <span class="text-success">online</span> /
+        Version: <span class="text-success">{{ frontendVersion }}</span>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<div class="area">
+</div>

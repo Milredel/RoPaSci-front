@@ -1,0 +1,42 @@
+<div class="container mt-5">
+  <div class="card w-100">
+    <div class="card-body">
+      <h5 class="card-title">Ready to play Rock-Paper-Scissors (RoPaSci) ?</h5>
+      <p class="card-text">
+        There are currently 0 game(e)s running.
+      </p>
+      <div class="row">
+        <div class="col-md-12 mx-auto">
+          <button (click)="startGame()"
+                  class="btn btn-primary btn-block waves-effect text-center m-b-20">
+            Start a new game
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 mx-auto">
+          Number of rounds :
+          <select class="browser-default custom-select" [(ngModel)]="roundNumber">
+            <option [value]="3">3</option>
+            <option [value]="5">5</option>
+            <option [value]="10">10</option>
+          </select>
+        </div>
+        <div class="col-md-12 mx-auto">
+          Mode :
+          <select class="browser-default custom-select" [(ngModel)]="mode">
+            <option [value]="MODES.CLASSIC">Classic</option>
+            <option [value]="MODES.EXTENDED">Extended</option>
+          </select>
+        </div>
+        <div class="col-md-12 mx-auto">
+          Opponent :
+          <select class="browser-default custom-select" [(ngModel)]="opponent">
+            <option [value]="OPPONENTS.COMPUTER">Computer</option>
+            <option [value]="OPPONENTS.HUMAN">Human</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

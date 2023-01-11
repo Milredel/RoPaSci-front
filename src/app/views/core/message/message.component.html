@@ -1,0 +1,8 @@
+<div *ngFor="let message of messageService.messages" class="alert {{ message.type }}" role="alert">
+  <h4 class="alert-heading">{{ message.title }}</h4>
+  <p>{{ message.content }}</p>
+  <ng-container *ngIf="message.footer">
+    <hr>
+    <p class="mb-0">{{ message.footer }}</p>
+  </ng-container>
+</div>

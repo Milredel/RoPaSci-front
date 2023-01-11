@@ -1,0 +1,22 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "esnext",
+    "outDir": "./out-tsc/spec",
+    "types": [
+      "mocha", "chai", "node"
+    ],
+    "lib": [
+      "es6", "dom"
+    ]
+  },
+  "files": [
+    "src/test.ts",
+    "src/polyfills.ts"
+  ],
+  "include": [
+    "e2e/tests/**/*.spec.it.ts",
+    "e2e/tests/**/*.d.ts"
+  ],
+  "moduleResolution": "node"
+}
