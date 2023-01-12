@@ -26,8 +26,25 @@ export class GameService extends ApiClass {
         super(http);
     }
 
-    public initNextGame(options: GameModel | null) {
-        this.nextGame = {...options};
+    public initNextGame(game: GameModel | null): Promise<any> {
+        const restCall = this.http
+            .post(`${environment.BACKEND_URL}/games/createGame`, game, {
+                headers: this.getHeaders(),
+                responseType: ReqContentType.Json,
+                observe: 'response'
+            }).toPromise();
+
+        const onComplete = (response: any) => {
+            if (response && response.ok) {
+                this.nextGame = {...game};
+                this.router.navigate([`/main/game`]);
+            }
+
+            throw new Error(`An error has occured during game creation: ` + response.message);
+        };
+
+        return this.restCallService.doRestCall(restCall, null,
+            {onComplete: onComplete.bind(this), onError: this.handleError.bind(this)});
     }
 
     public getAllGames(): Promise<GameModel[]> {

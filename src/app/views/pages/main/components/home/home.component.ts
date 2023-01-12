@@ -58,7 +58,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   public startGame(): void {
     this.gameService.initNextGame(<GameModel>{roundNumber: this.roundNumber, mode: this.mode, opponent: this.opponent});
-    this.router.navigate([`/main/game`]);
   }
 
   displayGameMode(mode: string): string {
