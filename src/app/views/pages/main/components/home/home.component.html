@@ -3,7 +3,7 @@
     <div class="card-body">
       <h5 class="card-title">Ready to play Rock-Paper-Scissors (RoPaSci) ?</h5>
       <p class="card-text">
-        There are currently 0 game(e)s running.
+        There are currently {{ elements?.length }} game(e)s running.
       </p>
       <div class="row">
         <div class="col-md-12 mx-auto">
@@ -37,6 +37,39 @@
             <option [value]="OPPONENTS.HUMAN">Human</option>
           </select>
         </div>
+      </div>
+      <div class="pt-10px">
+        <table mdbTable #tableEl="mdbTable" responsive="true" [striped]="true" class="z-depth-1 d-block d-md-table">
+          <thead>
+          <tr>
+            <th *ngFor="let head of headElements; let i = index" scope="col">{{head}}
+            </th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let el of elements; let i = index">
+            <ng-container *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+              <td>{{ displayGameCreator(el.creator, el.creatorUsername) }}</td>
+              <td>{{ displayGameOpponent(el.opponent) }}</td>
+              <td>{{ displayGameMode(el.mode) }}</td>
+              <td>{{ el.roundNumber }}</td>
+              <td>
+                <button (click)="joinGame(el)"
+                        class="btn btn-primary btn-block waves-effect text-center m-b-20">
+                  JOIN
+                </button>
+              </td>
+            </ng-container>
+          </tr>
+          </tbody>
+          <tfoot class="grey lighten-5 w-100">
+          <tr>
+            <td colspan="4">
+              <mdb-table-pagination [tableEl]="tableEl" [searchDataSource]="elements"></mdb-table-pagination>
+            </td>
+          </tr>
+          </tfoot>
+        </table>
       </div>
     </div>
   </div>
