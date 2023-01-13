@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   constructor(private router: Router,
               private cdRef: ChangeDetectorRef,
               private gameService: GameService,
-              private apiAuthService: ApiAuthService,) {
+              private apiAuthService: ApiAuthService) {
   }
 
   ngOnInit() {
