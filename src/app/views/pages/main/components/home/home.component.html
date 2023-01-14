@@ -25,9 +25,7 @@
         <div class="col-md-12 mx-auto">
           Mode :
           <select class="browser-default custom-select" [(ngModel)]="mode">
-            <option [value]="MODES.CLASSIC">Classic</option>
-            <option [value]="MODES.FRENCH">French</option>
-            <option [value]="MODES.STAR_TREK">Star Trek</option>
+            <option *ngFor="let key of objectKeys(MODES)" [value]="MODES[key].VALUE">{{ MODES[key].TEXT }}</option>
           </select>
         </div>
         <div class="col-md-12 mx-auto">

@@ -21,11 +21,12 @@ export class HomeComponent implements OnInit, AfterViewInit {
   headElements = ['Creator', 'Opponent', 'Mode', 'Rounds', 'Actions'];
 
   roundNumber = 3;
-  mode = GAME.MODE.CLASSIC;
+  mode = GAME.MODE.CLASSIC.VALUE;
   opponent = GAME.OPPONENT.COMPUTER;
   MODES = GAME.MODE;
   OPPONENTS = GAME.OPPONENT;
   connectedUser;
+  objectKeys = Object.keys;
 
   constructor(private router: Router,
               private cdRef: ChangeDetectorRef,

@@ -12,11 +12,7 @@ import { ApiAuthService } from '../auth/auth.service';
 
 @Injectable()
 export class GameService extends ApiClass {
-    nextGame = <GameModel>{
-        roundNumber: 3,
-        mode: GAME.MODE.CLASSIC,
-        opponent: GAME.OPPONENT.COMPUTER
-    };
+    nextGame: GameModel;
 
     constructor(public http: HttpClient,
                 private restCallService: RestCallService,
@@ -26,7 +22,7 @@ export class GameService extends ApiClass {
         super(http);
     }
 
-    public initNextGame(game: GameModel | null): Promise<any> {
+    public initNextGame(game: GameModel | null): Promise<void> {
         const restCall = this.http
             .post(`${environment.BACKEND_URL}/games/createGame`, game, {
                 headers: this.getHeaders(),
@@ -36,8 +32,8 @@ export class GameService extends ApiClass {
 
         const onComplete = (response: any) => {
             if (response && response.ok) {
-                this.nextGame = {...game};
-                this.router.navigate([`/main/game`]);
+                this.nextGame = response.body;
+                this.router.navigate([`/main/game/${this.nextGame._id}`]);
             }
 
             throw new Error(`An error has occured during game creation: ` + response.message);
@@ -58,5 +54,46 @@ export class GameService extends ApiClass {
 
         return this.restCallService.doRestCall(restCall, null,
           {onComplete: this.defaultOnCompete.bind(this), onError: this.handleError.bind(this)});
-      }
+    }
+
+    public getGameFromId(id: string): Promise<GameModel> {
+        this.requesting = true;
+
+        const restCall: Promise<GameModel> = this.http
+          .get<GameModel>(`${environment.BACKEND_URL}/games/${id}`, {
+            headers: this.getHeaders(),
+            responseType: ReqContentType.Json
+          }).toPromise();
+
+        return this.restCallService.doRestCall(restCall, null,
+          {onComplete: this.defaultOnCompete.bind(this), onError: this.handleError.bind(this)});
+    }
+
+    public postGameMove(gameId: string, round: number, move: string, isComputer: boolean = false): Promise<GameModel> {
+        const params = {
+            gameId: gameId,
+            round: round,
+            move: move
+        };
+        if (isComputer) {
+            Object.assign(params, {isComputer: true});
+        }
+        const restCall = this.http
+            .post(`${environment.BACKEND_URL}/games/move`, params, {
+                headers: this.getHeaders(),
+                responseType: ReqContentType.Json,
+                observe: 'response'
+            }).toPromise();
+
+        const onComplete = (response: any) => {
+            if (response && response.ok) {
+                return response.body;
+            }
+
+            throw new Error(`An error has occured during game move creation: ` + response.message);
+        };
+
+        return this.restCallService.doRestCall(restCall, null,
+            {onComplete: onComplete.bind(this), onError: this.handleError.bind(this)});
+    }
 }

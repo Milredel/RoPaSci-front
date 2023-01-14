@@ -1,31 +1,39 @@
 <div class="container mt-5">
     <div class="card w-100">
         <div class="card-body">
-            <h5 class="card-title text-center">{{ username }} VS {{ game.opponent }}</h5>
-            <h5 class="card-title text-center">{{ currentRound }} / {{ game.roundNumber }}</h5>
-
-            <div class="row">
-                <div class="row mx-auto text-center">
-                    <div>
-                        <img src="assets/images/game/rock.png" class="mw-200p cursor-pointer pr-10" alt="rock" />
+            <ng-container *ngIf="game">
+                <h5 class="card-title text-center">{{ username }} VS {{ game.opponent }}</h5>
+                <h5 class="card-title text-center">{{ currentRound }} / {{ game.roundNumber }}</h5>
+                <div class="row">
+                    <div class="col mx-auto text-center">
+                        <div class="text-center">
+                            Your choice
+                        </div>
+                        <div class="row mx-auto d-flex justify-content-center" *ngIf="!playersChoice; else elseBlock">
+                            <div *ngFor="let choice of MODES[game.mode.toUpperCase()].CHOICES; let last=last" [ngClass]="{'pr-10': !last}">
+                                <img src="assets/images/game/{{ choice }}.png" class="mw-90p cursor-pointer" alt="{{ choice }}" (click)="playMove(choice)" />
+                            </div>
+                        </div>
+                        <ng-template #elseBlock>
+                            <div class="row mx-auto d-flex justify-content-center">
+                                <div>
+                                    <img src="assets/images/game/{{ playersChoice }}.png" class="mw-90p" alt="{{ playersChoice }}" />
+                                </div>
+                            </div>
+                        </ng-template>
                     </div>
-                    <div>
-                        <img src="assets/images/game/paper.png" class="mw-200p cursor-pointer pr-10" alt="paper" />
-                    </div>
-                    <div>
-                        <img src="assets/images/game/scissors.png" class="mw-200p cursor-pointer pr-10" alt="scissors" />
-                    </div>
-                    <div *ngIf="game.mode === MODES.FRENCH" >
-                        <img src="assets/images/game/well.png" class="mw-200p cursor-pointer" alt="well" />
-                    </div>
-                    <div *ngIf="game.mode === MODES.STAR_TREK" >
-                        <img src="assets/images/game/lizard.png" class="mw-200p cursor-pointer pr-10" alt="lizard" />
-                    </div>
-                    <div *ngIf="game.mode === MODES.STAR_TREK" >
-                        <img src="assets/images/game/spock.png" class="mw-200p cursor-pointer" alt="Spock" />
+                    <div class="col mx-auto text-center">
+                        <div class="text-center">
+                            {{ game.opponent }}'s choice
+                        </div>
+                        <div class="row mx-auto d-flex justify-content-center">
+                            <div>
+                                <img src="assets/images/game/{{ opponentsChoice }}.png" class="mw-90p" alt="{{ opponentsChoice }}" />
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </ng-container>
         </div>
     </div>
 </div>
