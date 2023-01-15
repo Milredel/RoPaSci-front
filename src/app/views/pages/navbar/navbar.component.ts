@@ -27,4 +27,12 @@ export class NavbarComponent implements OnInit {
     this.router.navigate([`/login`]);
     this.toastService.success(`Congratulations`, `Logout succeeded.`, {showConfirmButton: false, timer: 1500});
   }
+
+  goToStats(): void {
+    this.router.navigate([`/main/stats`]);
+  }
+
+  goToGames(): void {
+    this.router.navigate([`/main/home`]);
+  }
 }

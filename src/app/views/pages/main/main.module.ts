@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MainRoutingModule } from './main.routing.module';
 import { HomeComponent } from './components/home/home.component';
 import { GameComponent } from './components/game/game.component';
+import { StatsComponent } from './components/stats/stats.component';
 import { FooterComponent } from '../footer/footer.component';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
@@ -32,6 +33,7 @@ import { UserService } from '../../../services/user/user.service';
     LayoutComponent,
     HomeComponent,
     GameComponent,
+    StatsComponent,
     FooterComponent,
     NavbarComponent,
     SidebarComponent
@@ -41,6 +43,7 @@ import { UserService } from '../../../services/user/user.service';
     LayoutComponent,
     HomeComponent,
     GameComponent,
+    StatsComponent,
     FooterComponent,
     NavbarComponent,
     SidebarComponent
