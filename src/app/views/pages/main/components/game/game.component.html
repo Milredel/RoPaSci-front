@@ -33,6 +33,28 @@
                         </div>
                     </div>
                 </div>
+                <div *ngIf="canGoToNextRound">
+                    <div class="col mx-auto text-center">
+                        {{ roundResultText }}
+                    </div>
+                    <div class="col mx-auto text-center" *ngIf="!gameIsEnded; else elseButton">
+                        <button (click)="goToNextRound()"
+                                class="btn btn-primary btn-block waves-effect text-center m-b-20">
+                            Start Next Round
+                        </button>
+                    </div>
+                    <ng-template #elseButton>
+                        <div class="col mx-auto text-center">
+                            {{ gameResultText }}
+                        </div>
+                        <div class="col mx-auto text-center">
+                            <button (click)="goToGames()"
+                                    class="btn btn-primary btn-block waves-effect text-center m-b-20">
+                                Return to Games
+                            </button>
+                        </div>
+                    </ng-template>
+                </div>
             </ng-container>
         </div>
     </div>
