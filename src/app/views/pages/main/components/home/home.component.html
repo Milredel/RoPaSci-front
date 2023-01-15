@@ -50,7 +50,7 @@
               <td>{{ displayGameCreator(el.creator, el.creatorUsername) }}</td>
               <td>{{ displayGameOpponent(el.opponent) }}</td>
               <td>{{ displayGameMode(el.mode) }}</td>
-              <td>{{ el.roundNumber }}</td>
+              <td>{{ el.status.currentRound }} / {{ el.roundNumber }}</td>
               <td>
                 <button (click)="joinGame(el)"
                         class="btn btn-primary btn-block waves-effect text-center m-b-20">

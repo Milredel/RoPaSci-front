@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     const decoded: JwtDecoded = this.apiAuthService.getJwtTokenDecoded();
     this.connectedUser = decoded;
 
-    this.gameService.getAllGames()
+    this.gameService.getAllPendingGames()
       .then(data => {
         this.elements = data;
         this.mdbTable.setDataSource(this.elements);
@@ -62,7 +62,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   displayGameMode(mode: string): string {
-    return GAME.MODE[mode.toUpperCase()];
+    return GAME.MODE[mode.toUpperCase()].TEXT;
   }
 
   displayGameOpponent(opponent: string): string {
@@ -71,5 +71,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   displayGameCreator(creator: number, creatorUsername: string): string {
     return this.connectedUser.username === creatorUsername ? 'me' : creatorUsername;
+  }
+
+  joinGame(game: GameModel): void {
+    this.router.navigate([`/main/game/${game._id}`]);
   }
 }

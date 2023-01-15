@@ -43,11 +43,11 @@ export class GameService extends ApiClass {
             {onComplete: onComplete.bind(this), onError: this.handleError.bind(this)});
     }
 
-    public getAllGames(): Promise<GameModel[]> {
+    public getAllPendingGames(): Promise<GameModel[]> {
         this.requesting = true;
 
         const restCall: Promise<GameModel> = this.http
-          .get<GameModel>(`${environment.BACKEND_URL}/games`, {
+          .get<GameModel>(`${environment.BACKEND_URL}/games/pending`, {
             headers: this.getHeaders(),
             responseType: ReqContentType.Json
           }).toPromise();
