@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
     FormUtils.markFormGroupTouched(this.form);
 
     if (this.form.invalid) {
-      this.toastService.error('Erreur', `Le formulaire de connexion est invalide, veuillez corriger les erreurs svp.`);
+      this.toastService.error('Error', `Connection form is invalid, please correct errors.`);
       return;
     }
 
