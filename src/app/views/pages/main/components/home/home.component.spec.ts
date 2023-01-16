@@ -11,6 +11,7 @@ describe('LayoutComponent', () => {
   let router: Router;
   let gameService: GameService;
   let apiAuthService: ApiAuthService;
+  // tslint:disable-next-line:prefer-const
   let cdRef: ChangeDetectorRef;
 
   beforeEach(() => {

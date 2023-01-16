@@ -4,11 +4,7 @@ import { ApiClass, ReqContentType } from '../api/api.class';
 import { environment } from '../../../environments/environment';
 import { RestCallService } from '../restcall/rest-call.service';
 import { Router } from '@angular/router';
-import { GAME } from '../../constants';
 import { GameModel } from '../../models/game.model';
-import { WindowService } from '../window/window.service';
-import { GuidUtils } from '../../utils/guid.utils';
-import { ApiAuthService } from '../auth/auth.service';
 
 @Injectable()
 export class GameService extends ApiClass {
@@ -16,9 +12,7 @@ export class GameService extends ApiClass {
 
     constructor(public http: HttpClient,
                 private restCallService: RestCallService,
-                private router: Router,
-                private windowService: WindowService,
-                private apiAuthService: ApiAuthService) {
+                private router: Router) {
         super(http);
     }
 
