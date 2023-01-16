@@ -32,7 +32,7 @@
           Opponent :
           <select class="browser-default custom-select" [(ngModel)]="opponent">
             <option [value]="OPPONENTS.COMPUTER">Computer</option>
-            <option [value]="OPPONENTS.HUMAN">Human</option>
+            <option [value]="OPPONENTS.HUMAN" disabled="true">Human</option>
           </select>
         </div>
       </div>
@@ -54,7 +54,7 @@
               <td>
                 <button (click)="joinGame(el)"
                         class="btn btn-primary btn-block waves-effect text-center m-b-20">
-                  JOIN
+                  RESUME
                 </button>
               </td>
             </ng-container>
