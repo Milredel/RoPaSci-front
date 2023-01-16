@@ -16,6 +16,13 @@ export class GameService extends ApiClass {
         super(http);
     }
 
+    /**
+     * Makes a post call to create a new game
+     *
+     * @param {(GameModel | null)} game
+     * @returns {Promise<void>}
+     * @memberof GameService
+     */
     public initNextGame(game: GameModel | null): Promise<void> {
         const restCall = this.http
             .post(`${environment.BACKEND_URL}/games/createGame`, game, {
@@ -37,6 +44,12 @@ export class GameService extends ApiClass {
             {onComplete: onComplete.bind(this), onError: this.handleError.bind(this)});
     }
 
+    /**
+     * Get all games with status 'pending'
+     *
+     * @returns {Promise<GameModel[]>}
+     * @memberof GameService
+     */
     public getAllPendingGames(): Promise<GameModel[]> {
         this.requesting = true;
 
@@ -50,6 +63,13 @@ export class GameService extends ApiClass {
           {onComplete: this.defaultOnCompete.bind(this), onError: this.handleError.bind(this)});
     }
 
+    /**
+     * Get game from given id
+     *
+     * @param {string} id
+     * @returns {Promise<GameModel>}
+     * @memberof GameService
+     */
     public getGameFromId(id: string): Promise<GameModel> {
         this.requesting = true;
 
@@ -63,6 +83,16 @@ export class GameService extends ApiClass {
           {onComplete: this.defaultOnCompete.bind(this), onError: this.handleError.bind(this)});
     }
 
+    /**
+     * Post call to create a new move for a given game and round
+     *
+     * @param {string} gameId
+     * @param {number} round
+     * @param {string} move
+     * @param {boolean} [isComputer=false]
+     * @returns {Promise<GameModel>}
+     * @memberof GameService
+     */
     public postGameMove(gameId: string, round: number, move: string, isComputer: boolean = false): Promise<GameModel> {
         const params = {
             gameId: gameId,

@@ -38,6 +38,12 @@ export class GameComponent implements OnInit {
     this.initGame();
   }
 
+  /**
+   * Initialize new game, taking the one in gameService or retrieving it from the request game id
+   *
+   * @returns {Promise<void>}
+   * @memberof GameComponent
+   */
   async initGame(): Promise<void> {
     this.game = this.gameService.nextGame;
     this.playersChoice = null;
@@ -52,6 +58,13 @@ export class GameComponent implements OnInit {
     this.currentRound = this.game.status.currentRound;
   }
 
+  /**
+   * Plays a move, actually here, two (yours, and the computer's one)
+   *
+   * @param {string} move
+   * @returns {Promise<void>}
+   * @memberof GameComponent
+   */
   async playMove(move: string): Promise<void> {
     await this.gameService.postGameMove(this.gameId, this.currentRound, move);
     this.playersChoice = move;
@@ -62,6 +75,12 @@ export class GameComponent implements OnInit {
     this.checkFinalActions(updatedGame);
   }
 
+  /**
+   * Potential additional actions to be performed after a move from the round is received
+   *
+   * @param {GameModel} updatedGame
+   * @memberof GameComponent
+   */
   checkFinalActions(updatedGame: GameModel): void {
     if (updatedGame.status.currentRound !== this.currentRound) {
       this.roundResultText = this.getRoundResultText(updatedGame);
@@ -74,6 +93,13 @@ export class GameComponent implements OnInit {
     }
   }
 
+  /**
+   * Returns full text when we have a winner of a round
+   *
+   * @param {GameModel} game
+   * @returns {string}
+   * @memberof GameComponent
+   */
   getRoundResultText(game: GameModel): string {
     switch (game.rounds[this.currentRound - 1].winner) {
       case 'draw':
@@ -85,6 +111,13 @@ export class GameComponent implements OnInit {
     }
   }
 
+  /**
+   * Returns full text when we have a winner of a game
+   *
+   * @param {GameModel} game
+   * @returns {string}
+   * @memberof GameComponent
+   */
   getGameResultText(game: GameModel): string {
     switch (game.status.winner) {
       case 'draw':
@@ -96,10 +129,20 @@ export class GameComponent implements OnInit {
     }
   }
 
+  /**
+   * Reinitialize game
+   *
+   * @memberof GameComponent
+   */
   goToNextRound(): void {
     this.initGame();
   }
 
+  /**
+   * Navigate to games page
+   *
+   * @memberof GameComponent
+   */
   goToGames(): void {
     this.router.navigate(['/main/home']);
   }

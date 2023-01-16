@@ -61,18 +61,45 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.gameService.initNextGame(<GameModel>{roundNumber: this.roundNumber, mode: this.mode, opponent: this.opponent});
   }
 
+  /**
+   * Returns full text of a given game mode
+   *
+   * @param {string} mode
+   * @returns {string}
+   * @memberof HomeComponent
+   */
   displayGameMode(mode: string): string {
     return GAME.MODE[mode.toUpperCase()].TEXT;
   }
-
+  /**
+   * Returns label of a given game opponent
+   *
+   * @param {string} opponent
+   * @returns {string}
+   * @memberof HomeComponent
+   */
   displayGameOpponent(opponent: string): string {
     return GAME.OPPONENT[opponent.toUpperCase()];
   }
 
+  /**
+   * Returns name of the creator, 'me' if requester is the creator, creatorUsername otherwise
+   *
+   * @param {number} creator
+   * @param {string} creatorUsername
+   * @returns {string}
+   * @memberof HomeComponent
+   */
   displayGameCreator(creator: number, creatorUsername: string): string {
     return this.connectedUser.username === creatorUsername ? 'me' : creatorUsername;
   }
 
+  /**
+   * Navigates to the given game page
+   *
+   * @param {GameModel} game
+   * @memberof HomeComponent
+   */
   joinGame(game: GameModel): void {
     this.router.navigate([`/main/game/${game._id}`]);
   }
