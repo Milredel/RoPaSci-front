@@ -3,7 +3,8 @@
         <div class="card-body">
             <ng-container *ngIf="game">
                 <h5 class="card-title text-center">{{ username }} VS {{ game.opponent }}</h5>
-                <h5 class="card-title text-center">{{ currentRound }} / {{ game.roundNumber }}</h5>
+                <h5 class="card-title text-center">Round : {{ currentRound }} / {{ game.roundNumber }}</h5>
+                <h5 class="card-title text-center">Score : {{ game.status.score.creator }} - {{ game.status.score.opponent }}</h5>
                 <div class="row">
                     <div class="col mx-auto text-center">
                         <div class="text-center">
