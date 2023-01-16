@@ -27,6 +27,16 @@ describe('HomeComponent', () => {
     return expect(component).to.not.be.undefined;
   });
 
+  describe('ngOnInit', () => {
+    it('should call gameService.getAllPendingGames', () => {
+        stub(gameService, 'getAllPendingGames').callsFake(() => {
+            return {then: () => null};
+        });
+        component.ngOnInit();
+        return (expect(gameService.getAllPendingGames) as any).to.have.been.called;
+    });
+});
+
   describe('startGame', () => {
     it('should call gameService.initNextGame with correct params', () => {
       stub(gameService, 'initNextGame');
