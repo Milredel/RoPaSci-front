@@ -19,16 +19,4 @@ export class UserModel {
     return userModel;
   }
 
-  public static fromAuthInfosResponse(response: any): UserModel {
-    try {
-      const userModel = new UserModel(
-        response.id,
-        response.username,
-        null
-      );
-      return userModel;
-    } catch (e) {
-      throw new Error('Impossible d\'exploiter les informations du compte utilisateur récupérées.');
-    }
-  }
 }

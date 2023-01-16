@@ -25,13 +25,11 @@ describe('AuthGuardService', () => {
   describe('canActivate', () => {
     it('should return false is guard detects an user no authenticated', () => {
       stub(apiAuthSrv, 'authenticated').callsFake(() => false);
-      stub(toastService, 'error');
       stub(router, 'navigate');
 
       const res = service.canActivate({} as any);
 
-      return expect(res).to.be.false && (expect(toastService.error) as any).to.have.been.called &&
-        (expect(router.navigate) as any).to.have.been.calledWith(['/login']);
+      return expect(res).to.be.false && (expect(router.navigate) as any).to.have.been.calledWith(['/login']);
     });
 
     it('should return true if guards detects an user authenticated', () => {

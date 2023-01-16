@@ -58,7 +58,7 @@ describe('AuthService', () => {
         service['loginOnComplete'](mockedResponse, mockedForm);
         expect.fail();
       } catch (e) {
-        return expect(e.message).to.be.deep.eq(`Une erreur est survenue dans le processus d'authentification.`);
+        return expect(e.message).to.be.deep.eq(`An error has occured during authentication.`);
       }
     });
 
@@ -70,7 +70,7 @@ describe('AuthService', () => {
         service['loginOnComplete'](mockedResponse, mockedForm);
         expect.fail();
       } catch (e) {
-        return expect(e.message).to.be.deep.eq(`Une erreur est survenue dans le processus d'authentification.`);
+        return expect(e.message).to.be.deep.eq(`An error has occured during authentication.`);
       }
     });
 
@@ -94,7 +94,7 @@ describe('AuthService', () => {
         service['loginOnComplete'](mockedResponse, mockedForm);
         expect.fail();
       } catch (e) {
-        return expect(e.message).to.be.deep.eq(`Impossible de vous identifier.`);
+        return expect(e.message).to.be.deep.eq(`Impossible to log you in.`);
       }
     });
 
@@ -106,7 +106,7 @@ describe('AuthService', () => {
         service['loginOnComplete'](mockedResponse, mockedForm);
         expect.fail();
       } catch (e) {
-        return expect(e.message).to.be.deep.eq(`Impossible de vous identifier.`);
+        return expect(e.message).to.be.deep.eq(`Impossible to log you in.`);
       }
     });
 
@@ -136,7 +136,7 @@ describe('AuthService', () => {
         expect.fail();
       } catch (e) {
         return (expect(toastService.error) as any).to.have.been.called &&
-          expect(e.message).to.be.deep.eq('Le couple identifiant/mot de passe ne correspond pas.');
+          expect(e.message).to.be.deep.eq(`Username or password doesn't match.`);
       }
     });
 

@@ -1,18 +1,24 @@
+import { ChangeDetectorRef } from '@angular/core';
 import { expect } from 'chai';
 import { HomeComponent } from './home.component';
 import { Router } from '@angular/router';
 import { stubClass } from '../../../../../../test';
-import { GameService } from 'src/app/services/game/game.service';
+import { GameService } from '../../../../../services/game/game.service';
+import { ApiAuthService } from '../../../../..//services/auth/auth.service';
 
 describe('LayoutComponent', () => {
   let component: HomeComponent;
   let router: Router;
   let gameService: GameService;
+  let apiAuthService: ApiAuthService;
+  let cdRef: ChangeDetectorRef;
 
   beforeEach(() => {
     component = new HomeComponent(
       router = stubClass(Router),
-      gameService = stubClass(GameService)
+      cdRef,
+      gameService = stubClass(GameService),
+      apiAuthService = stubClass(ApiAuthService)
     );
   });
 
