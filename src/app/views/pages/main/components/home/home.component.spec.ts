@@ -6,7 +6,7 @@ import { stub, stubClass } from '../../../../../../test';
 import { GameService } from '../../../../../services/game/game.service';
 import { ApiAuthService } from '../../../../..//services/auth/auth.service';
 
-describe('LayoutComponent', () => {
+describe('HomeComponent', () => {
   let component: HomeComponent;
   let router: Router;
   let gameService: GameService;
