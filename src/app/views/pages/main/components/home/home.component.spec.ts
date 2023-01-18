@@ -1,8 +1,7 @@
 import { ChangeDetectorRef } from '@angular/core';
-import { expect } from 'chai';
 import { HomeComponent } from './home.component';
 import { Router } from '@angular/router';
-import { stub, stubClass } from '../../../../../../test';
+import { expect, stub, stubClass } from '../../../../../../test';
 import { GameService } from '../../../../../services/game/game.service';
 import { ApiAuthService } from '../../../../..//services/auth/auth.service';
 
@@ -35,7 +34,7 @@ describe('HomeComponent', () => {
         component.ngOnInit();
         return (expect(gameService.getAllPendingGames) as any).to.have.been.called;
     });
-});
+  });
 
   describe('startGame', () => {
     it('should call gameService.initNextGame with correct params', () => {

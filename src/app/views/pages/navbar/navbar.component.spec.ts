@@ -49,4 +49,20 @@ describe('NavbarComponent', () => {
         (expect(toastService.success) as any).to.have.been.called;
     });
   });
+
+  describe('goToStats', () => {
+    it('should call router.navigate with correct param', () => {
+      stub(router, 'navigate');
+      component.goToStats();
+      return (expect(router.navigate) as any).to.have.been.calledWith(['/main/stats']);
+    });
+  });
+
+  describe('goToGames', () => {
+    it('should call router.navigate with correct param', () => {
+      stub(router, 'navigate');
+      component.goToGames();
+      return (expect(router.navigate) as any).to.have.been.calledWith(['/main/home']);
+    });
+  });
 });

@@ -1,8 +1,7 @@
 import { MathUtils } from '../../../../../utils/math.utils';
-import { expect } from 'chai';
 import { GameComponent } from './game.component';
 import { ActivatedRoute, Router } from '@angular/router';
-import { stub, stubClass } from '../../../../../../test';
+import { expect, stub, stubClass } from '../../../../../../test';
 import { GameService } from '../../../../../services/game/game.service';
 import { ApiAuthService } from '../../../../..//services/auth/auth.service';
 
