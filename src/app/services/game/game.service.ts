@@ -64,6 +64,27 @@ export class GameService extends ApiClass {
     }
 
     /**
+     * Get games with status 'ended' and page and limit
+     *
+     * @param {number} page
+     * @param {number} limit
+     * @returns {Promise<GameModel[]>}
+     * @memberof GameService
+     */
+    public getEndedGames(page: number, limit: number): Promise<GameModel[]> {
+        this.requesting = true;
+
+        const restCall: Promise<GameModel> = this.http
+          .get<GameModel>(`${environment.BACKEND_URL}/games/ended/${page}/${limit}`, {
+            headers: this.getHeaders(),
+            responseType: ReqContentType.Json
+          }).toPromise();
+
+        return this.restCallService.doRestCall(restCall, null,
+          {onComplete: this.defaultOnCompete.bind(this), onError: this.handleError.bind(this)});
+    }
+
+    /**
      * Get game from given id
      *
      * @param {string} id
@@ -75,6 +96,19 @@ export class GameService extends ApiClass {
 
         const restCall: Promise<GameModel> = this.http
           .get<GameModel>(`${environment.BACKEND_URL}/games/${id}`, {
+            headers: this.getHeaders(),
+            responseType: ReqContentType.Json
+          }).toPromise();
+
+        return this.restCallService.doRestCall(restCall, null,
+          {onComplete: this.defaultOnCompete.bind(this), onError: this.handleError.bind(this)});
+    }
+
+    public getStats(): Promise<any> {
+        this.requesting = true;
+
+        const restCall: Promise<any> = this.http
+          .get<any>(`${environment.BACKEND_URL}/games/stats`, {
             headers: this.getHeaders(),
             responseType: ReqContentType.Json
           }).toPromise();

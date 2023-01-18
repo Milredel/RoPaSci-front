@@ -2,7 +2,53 @@
     <div class="card w-100">
         <div class="card-body">
             <h5 class="card-title">Your Awesome Statistics</h5>
-
+            <div class="pt-10px">
+                Your last games :
+            </div>
+            <div class="pt-10px">
+                <table mdbTable #tableEl="mdbTable" responsive="true" [striped]="true" class="z-depth-1 d-block d-md-table">
+                    <thead>
+                        <tr>
+                            <th *ngFor="let head of headElements; let i = index" scope="col">{{head}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let el of elements; let i = index">
+                            <ng-container *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+                                <td>{{ displayGameCreator(el.creator, el.creatorUsername) }}</td>
+                                <td>{{ displayGameOpponent(el.opponent) }}</td>
+                                <td>{{ displayGameMode(el.mode) }}</td>
+                                <td>{{ el.status.winner }}</td>
+                                <td>{{ el.status.score.creator }} - {{ el.status.score.opponent }}</td>
+                            </ng-container>
+                        </tr>
+                    </tbody>
+                    <tfoot class="grey lighten-5 w-100">
+                        <tr>
+                            <td colspan="4">
+                                <mdb-table-pagination [tableEl]="tableEl" [searchDataSource]="elements"></mdb-table-pagination>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="pt-10px">
+                Some useful (or not) info about your games :
+            </div>
+            <div *ngIf="stats">
+                <ul>
+                    <li>
+                        Total played games : {{ stats.totalPlayedGames }}
+                        <ul>
+                            <li>Classic : {{ stats.playedByModes.classic }}</li>
+                            <li>French : {{ stats.playedByModes.french }}</li>
+                            <li>Star Trek : {{ stats.playedByModes.star_trek }}</li>
+                        </ul>
+                    </li>
+                    <li>Total pending games : {{ stats.totalPendingGames }}</li>
+                    <li>You VS Computer : {{ stats.totalScoreVsComputer.win }} - {{ stats.totalScoreVsComputer.lose }} ({{ stats.totalScoreVsComputer.draw}} draw)</li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
