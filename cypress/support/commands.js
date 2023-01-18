@@ -15,7 +15,7 @@ Cypress.Commands.add("login", () => {
     method: 'POST',
     url: 'http://127.0.0.1:3000/auth/login',
     form: true,
-    body: {username: 'julien', password: 'azerty'}
+    body: {username: 'Morgan', password: 'azerty'}
   })
     .then((response) => {
       window.localStorage.setItem('jwt', response.body.access_token);

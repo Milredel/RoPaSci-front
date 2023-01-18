@@ -105,9 +105,9 @@ describe('ApiAuthClass', () => {
 
   describe('getUserData', () => {
     it('should return user data', () => {
-      stub(mockedLocalStorage, 'getItem').callsFake(() => JSON.stringify({username: 'julien'}));
+      stub(mockedLocalStorage, 'getItem').callsFake(() => JSON.stringify({username: 'Morgan'}));
 
-      return expect(cls.getParsedUserData()).to.be.deep.eq({username: 'julien'});
+      return expect(cls.getParsedUserData()).to.be.deep.eq({username: 'Morgan'});
 
     });
   });
@@ -124,11 +124,11 @@ describe('ApiAuthClass', () => {
 
   describe('getStorageKey', () => {
     it('should get local storage item', () => {
-      stub(mockedLocalStorage, 'getItem').callsFake(() => JSON.stringify({username: 'julien'}));
+      stub(mockedLocalStorage, 'getItem').callsFake(() => JSON.stringify({username: 'Morgan'}));
 
       const res = cls['getStorageKey']('a key');
 
-      return expect(res).to.be.deep.eq(JSON.stringify({username: 'julien'}));
+      return expect(res).to.be.deep.eq(JSON.stringify({username: 'Morgan'}));
     });
   });
 

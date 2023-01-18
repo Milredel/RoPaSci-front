@@ -31,10 +31,10 @@ describe('LoginComponent', () => {
     it('should initialize the form and set errors classes for valdemort config', () => {
       component.ngOnInit();
 
-      component.form.get('username').setValue('julien');
+      component.form.get('username').setValue('Morgan');
       component.form.get('password').setValue('azerty');
 
-      return expect(component.form.value).to.be.deep.eq({username: 'julien', password: 'azerty'}) &&
+      return expect(component.form.value).to.be.deep.eq({username: 'Morgan', password: 'azerty'}) &&
         expect(component['valdemortConfig'].errorsClasses).to.not.be.undefined;
     });
   });
@@ -46,7 +46,7 @@ describe('LoginComponent', () => {
 
       component.ngOnInit();
 
-      component.form.get('username').setValue('julien');
+      component.form.get('username').setValue('Morgan');
       component.form.get('password').setValue(null); // password is mandatory for the form validity
 
       component.auth();
@@ -64,7 +64,7 @@ describe('LoginComponent', () => {
 
       component.ngOnInit();
 
-      component.form.get('username').setValue('julien');
+      component.form.get('username').setValue('Morgan');
       component.form.get('password').setValue('azerty');
 
       await component.auth();

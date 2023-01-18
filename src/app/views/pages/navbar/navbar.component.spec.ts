@@ -26,13 +26,13 @@ describe('NavbarComponent', () => {
   describe('ngOnInit', () => {
     it('should initialize username from jwt token', () => {
       const func = () => {
-        return {username: 'julien'} as any;
+        return {username: 'Morgan'} as any;
       };
       stub(apiAuthService, 'getJwtTokenDecoded').callsFake(func);
 
       component.ngOnInit();
 
-      return expect(component.username).to.be.deep.eq('julien');
+      return expect(component.username).to.be.deep.eq('Morgan');
     });
   });
 
