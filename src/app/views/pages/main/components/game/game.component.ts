@@ -71,6 +71,7 @@ export class GameComponent implements OnInit {
     const gameChoices = this.MODES[this.game.mode.toUpperCase()].CHOICES;
     const opponentMove = gameChoices[MathUtils.getRandomIntWithMax(gameChoices.length) - 1];
     const updatedGame = await this.gameService.postGameMove(this.gameId, this.currentRound, opponentMove, true);
+    this.game = updatedGame;
     this.opponentsChoice = opponentMove;
     this.checkFinalActions(updatedGame);
   }
